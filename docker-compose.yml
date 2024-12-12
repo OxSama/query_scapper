@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    depends_on:
+      - mysql
+      - postgres
+    environment:
+      # MySQL environment variables
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=scraper_user
+      - MYSQL_PASSWORD=scraper_password
+      - MYSQL_DATABASE=scraper_db
+      # PostgreSQL environment variables
+      - PG_HOST=postgres
+      - PG_USER=scraper_user
+      - PG_PASSWORD=scraper_password
+      - PG_DATABASE=scraper_db
+      # Set this to either "mysql" or "postgres"
+      - DB_TYPE=mysql
+    volumes:
+      - .:/app
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_USER=scraper_user
+      - MYSQL_PASSWORD=scraper_password
+      - MYSQL_DATABASE=scraper_db
+      - MYSQL_ROOT_PASSWORD=root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=scraper_user
+      - POSTGRES_PASSWORD=scraper_password
+      - POSTGRES_DB=scraper_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  mysql_data:
+  postgres_data:
