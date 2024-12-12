@@ -8,14 +8,14 @@ services:
     environment:
       # MySQL environment variables
       - MYSQL_HOST=mysql
-      - MYSQL_USER=scraper_user
-      - MYSQL_PASSWORD=scraper_password
-      - MYSQL_DATABASE=scraper_db
+      - MYSQL_USER=scapper_user
+      - MYSQL_PASSWORD=scapper_password
+      - MYSQL_DATABASE=scapper_db
       # PostgreSQL environment variables
       - PG_HOST=postgres
-      - PG_USER=scraper_user
-      - PG_PASSWORD=scraper_password
-      - PG_DATABASE=scraper_db
+      - PG_USER=scapper_user
+      - PG_PASSWORD=scapper_password
+      - PG_DATABASE=scapper_db
       # Set this to either "mysql" or "postgres"
       - DB_TYPE=mysql
     volumes:
@@ -24,9 +24,9 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      - MYSQL_USER=scraper_user
-      - MYSQL_PASSWORD=scraper_password
-      - MYSQL_DATABASE=scraper_db
+      - MYSQL_USER=scapper_user
+      - MYSQL_PASSWORD=scapper_password
+      - MYSQL_DATABASE=scapper_db
       - MYSQL_ROOT_PASSWORD=root_password
     ports:
       - "3306:3306"
@@ -36,9 +36,9 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      - POSTGRES_USER=scraper_user
-      - POSTGRES_PASSWORD=scraper_password
-      - POSTGRES_DB=scraper_db
+      - POSTGRES_USER=scapper_user
+      - POSTGRES_PASSWORD=scapper_password
+      - POSTGRES_DB=scapper_db
     ports:
       - "5432:5432"
     volumes:
