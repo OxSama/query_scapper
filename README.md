@@ -24,9 +24,9 @@ Before you begin, ensure you have the following installed:
 
 Run the following command to build and start the Docker containers in the background:
 
-   ```bash
-   docker compose up -d --build
-   ```
+    ```bash
+        docker compose up -d --build
+    ```
 
 3. **Verify Running Containers**: 
 
@@ -46,17 +46,18 @@ App containers should be visible
 From the Host Machine:
 
 
- ```bash
+```bash
    mysql -h 127.0.0.1 -P 3306 -u scapper_user -p
+
 ```
 
 Basic SQL Commands:
 
-    ```bash
-        SHOW DATABASES;
-        USE scapper_db;
-        SHOW TABLES;
-    ```
+```bash
+    SHOW DATABASES;
+    USE scapper_db;
+    SHOW TABLES;
+```
 
 **PostgreSQL**
 
@@ -64,33 +65,33 @@ Basic SQL Commands:
 From the Host Machine:
 
 
-    ```bash
+```bash
     psql -h 127.0.0.1 -p 5432 -U scapper_user -d scapper_db
-    ```
+```
 
 Basic SQL Commands:
 
 
-    ```bash
-        \l          -- List all databases
-        \c scapper_db -- Connect to `scapper_db`
-        \dt    
-    ```
+```bash
+    \l          -- List all databases
+    \c scapper_db -- Connect to `scapper_db`
+    \dt    
+```
 
 
 ## Stopping the Application
 
 
-    ```bash
-        docker compose down
-    ```
+```bash
+    docker compose down
+```
 
 ## Cleaning Up
 
-    ```bash
-        docker compose down
+```bash
+    docker compose down
 
-        docker rmi <image-id>
+    docker rmi <image-id>
 
-        docker compose up -d --build
-    ```
+    docker compose up -d --build
+```
