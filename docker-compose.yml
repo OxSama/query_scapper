@@ -5,29 +5,15 @@ services:
     depends_on:
       - mysql
       - postgres
-    environment:
-      # MySQL environment variables
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=scapper_user
-      - MYSQL_PASSWORD=scapper_password
-      - MYSQL_DATABASE=scapper_db
-      # PostgreSQL environment variables
-      - PG_HOST=postgres
-      - PG_USER=scapper_user
-      - PG_PASSWORD=scapper_password
-      - PG_DATABASE=scapper_db
-      # Set this to either "mysql" or "postgres"
-      - DB_TYPE=mysql
+    env_file:
+      - .env
     volumes:
       - .:/app
 
   mysql:
     image: mysql:8.0
-    environment:
-      - MYSQL_USER=scapper_user
-      - MYSQL_PASSWORD=scapper_password
-      - MYSQL_DATABASE=scapper_db
-      - MYSQL_ROOT_PASSWORD=root_password
+    env_file:
+      - .env
     ports:
       - "3306:3306"
     volumes:
@@ -35,10 +21,12 @@ services:
 
   postgres:
     image: postgres:latest
+    env_file:
+      - .env
     environment:
-      - POSTGRES_USER=scapper_user
-      - POSTGRES_PASSWORD=scapper_password
-      - POSTGRES_DB=scapper_db
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=${PG_DATABASE}
     ports:
       - "5432:5432"
     volumes:
