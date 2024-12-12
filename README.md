@@ -15,24 +15,25 @@ Before you begin, ensure you have the following installed:
 ## Setup Instructions
 
 1. **Clone the Repository**:
-   ```bash
-   git clone <repository-url>
-   cd sql_scrapper
-   ```
+
+```bash
+    git clone <repository-url>
+    cd sql_scrapper
+```
 
 2. **Build and Run the Application**: 
 
 Run the following command to build and start the Docker containers in the background:
 
-    ```bash
-        docker compose up -d --build
-    ```
+```bash
+    docker compose up -d --build
+```
 
 3. **Verify Running Containers**: 
 
-    ```bash
-        docker ps
-    ```
+```bash
+    docker ps
+```
 
 
 App containers should be visible
