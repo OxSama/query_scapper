@@ -9,6 +9,7 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -219,6 +220,16 @@ func insertAuthLog(db *sql.DB, entry LogEntry) error {
 }
 
 func main() {
+
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file:", err)
+	}
+
+	fmt.Printf("DB_TYPE: %s\n", os.Getenv("DB_TYPE"))
+	fmt.Printf("MYSQL_HOST: %s\n", os.Getenv("MYSQL_HOST"))
+	fmt.Printf("MYSQL_USER: %s\n", os.Getenv("MYSQL_USER"))
+	fmt.Printf("MYSQL_DATABASE: %s\n", os.Getenv("MYSQL_DATABASE"))
 
 	time.Sleep(10 * time.Second)
 
