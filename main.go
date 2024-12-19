@@ -64,6 +64,7 @@ func getDBConnection() (*sql.DB, error) {
 	db.SetConnMaxLifetime(5 * time.Minute)
 
 	return db, nil
+
 }
 
 func createTables(db *sql.DB) error {
