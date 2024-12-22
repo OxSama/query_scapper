@@ -50,10 +50,13 @@ const (
 				timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				status_code INT NOT NULL,
 				description TEXT,
+				query_string TEXT,
+				risk_level VARCHAR(10),
 				FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
 				INDEX idx_user_logs (user_id, timestamp),
 				INDEX idx_action (action),
-				INDEX idx_timestamp (timestamp)
+				INDEX idx_timestamp (timestamp),
+				INDEX idx_risk_level (risk_level)
 			) ENGINE=InnoDB;
 	`
 )
@@ -99,11 +102,14 @@ const (
 				user_agent TEXT,
 				timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				status_code INT NOT NULL,
-				description TEXT
+				description TEXT,
+				query_string TEXT,
+				risk_level VARCHAR(10)
 			);
 			CREATE INDEX IF NOT EXISTS idx_user_logs ON auth_logs(user_id, timestamp);
 			CREATE INDEX IF NOT EXISTS idx_action ON auth_logs(action);
 			CREATE INDEX IF NOT EXISTS idx_timestamp ON auth_logs(timestamp);
+			CREATE INDEX IF NOT EXISTS idx_risk_level ON auth_logs(risk_level);
 	`
 )
 
